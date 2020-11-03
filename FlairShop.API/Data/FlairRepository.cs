@@ -66,10 +66,8 @@ namespace FlairShop.API.Data
 
         public async Task<IEnumerable<Product>> GetProducts()
         {
-
                 var products = await _context.Products.ToListAsync();
                 return products;
-
         }
         public async Task<IEnumerable<Product>> GetVendorProducts(int vendorId)
         {

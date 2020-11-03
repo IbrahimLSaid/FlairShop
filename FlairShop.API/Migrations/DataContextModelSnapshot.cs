@@ -141,7 +141,7 @@ namespace FlairShop.API.Migrations
             modelBuilder.Entity("FlairShop.API.Models.Order", b =>
                 {
                     b.HasOne("FlairShop.API.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

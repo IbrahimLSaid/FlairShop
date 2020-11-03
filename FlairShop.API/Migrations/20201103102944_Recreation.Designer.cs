@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlairShop.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201101085329_InitialCreation")]
-    partial class InitialCreation
+    [Migration("20201103102944_Recreation")]
+    partial class Recreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -143,7 +143,7 @@ namespace FlairShop.API.Migrations
             modelBuilder.Entity("FlairShop.API.Models.Order", b =>
                 {
                     b.HasOne("FlairShop.API.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

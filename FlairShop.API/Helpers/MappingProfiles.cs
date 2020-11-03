@@ -15,8 +15,19 @@ namespace FlairShop.API.Helpers
             CreateMap<UserForUpdateDto, User>();
             CreateMap<UserForRegisterDto, User>();
 
-            ///Product Mapping
+            //Product Mapping
             CreateMap<Product, ProductForListDto>();
+            CreateMap<Product, ProductForDetailsDto>();
+            CreateMap<ProductForUpdateDto, Product>();
+
+            //Vendor Mapping
+            CreateMap<Vendor, VendorForDetailsDto>();
+            CreateMap<Vendor, VendorForListDto>();
+
+            //Order Mapping
+            CreateMap<Order, OrderForListDto>();
+            CreateMap<Order, OrderForDetailsDto>();
+            CreateMap<OrderForCreateDto, Order>();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FlairShop.API.Models
@@ -11,5 +12,6 @@ namespace FlairShop.API.Models
         public string ProductType { get; set; }
         public int VendorId { get; set; }
         public Vendor Vendor { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

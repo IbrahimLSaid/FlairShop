@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FlairShop.API.Migrations
 {
-    public partial class InitialCreation : Migration
+    public partial class Recreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using FlairShop.API.Data;
@@ -46,38 +47,38 @@ namespace FlairShop.API.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> PlaceProduct(Product product)
         {
+            if (User.FindFirst(ClaimTypes.Role).Value != "Vendor")
+                return Unauthorized();
+            
             var vendorFromRepo = await _repo.GetVendor(product.VendorId);
-
-            // var productToCreate = _mapper.Map<Product>(productForDetailsDto);
 
             vendorFromRepo.Products.Add(product);
             await _repo.SaveAll();
 
             return Ok(product);
         }
-        // [HttpPut("{id}")]
-        // public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductForUpdateDto productForUpdateDto)
-        // {
-        //     // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-        //     //     return Unauthorized();
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductForUpdateDto productForUpdateDto)
+        {
+            if (User.FindFirst(ClaimTypes.Role).Value != "Vendor")
+                return Unauthorized();
 
-        //     var productFromRepo = await _repo.GetProduct(id);
+            var productFromRepo = await _repo.GetProduct(id);
 
-        //     _mapper.Map(productForUpdateDto, productFromRepo);
+            _mapper.Map(productForUpdateDto, productFromRepo);
 
-        //     if (await _repo.SaveAll())
-        //         return NoContent();
+            if (await _repo.SaveAll())
+                return NoContent();
 
-        //     throw new Exception($"Updating product {id} failed on save!");
-        // }
-        // [HttpDelete("{id}")]
+            throw new Exception($"Updating product {id} failed on save!");
+        }
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
+            if (User.FindFirst(ClaimTypes.Role).Value != "Vendor")
+                return Unauthorized();
+                
             var productToDelete = await _repo.GetProduct(id);
-
-            // _mapper.Map<Product>(productToDelete);
-            // _repo.Delete(productToDelete);
-            // await _repo.SaveAll();
             
             _context.Products.Remove(productToDelete);
             await _repo.SaveAll();
