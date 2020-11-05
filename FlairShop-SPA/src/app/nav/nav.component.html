@@ -1,0 +1,35 @@
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"><img src="../../assets/VoltLogo.png" alt="VoltLogo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/parcels']" routerLinkActive="router-link-active">My Parcels <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/vendors']" routerLinkActive="router-link-active">Vendors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/products']" routerLinkActive="router-link-active">Marketplace</a>
+          </li>
+        </ul>
+        <div class="dropdown" *ngIf="loggedIn()">
+          <a class="nav-link dropdown-toggle btn-success" href="#" id="dropdown01" data-toggle="dropdown">Welcome {{authService.userToken.unique_name}}</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">My Profile</a>
+            <a class="dropdown-item" href="#">My Parcels</a>
+            <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+          </div>
+        </div>
+        <form class="form-inline my-2 my-lg-0" *ngIf="!loggedIn()" #loginForm="ngForm" (ngSubmit)="login()">
+          <input class="form-control mr-sm-2" name="username" type="text" placeholder="Username" [(ngModel)]="model.username">
+          <input class="form-control mr-sm-2" name="password" type="password" placeholder="Password" [(ngModel)]="model.password">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
+        </form>
+      </div>
+    </nav>
+
+    <script src="../../dist/js/bootstrap.min.js"></script>

@@ -42,6 +42,10 @@ namespace FlairShop.API.Controllers
 
             var productToReturn = _mapper.Map<ProductForDetailsDto>(product);
 
+            var vendor = await _repo.GetVendor(productToReturn.VendorId);
+
+            productToReturn.VendorName = vendor.Name;
+
             return Ok(productToReturn);
         }
         [HttpPost("Create")]

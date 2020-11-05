@@ -70,7 +70,7 @@ namespace FlairShop.API.Data
             return products;
         }
         public async Task<IEnumerable<Product>> GetVendorProducts(int vendorId)
-        {
+        {   
             var vendorProducts = await _context.Products.Where(p => p.VendorId == vendorId).ToListAsync();
             return vendorProducts;
         }
@@ -78,7 +78,6 @@ namespace FlairShop.API.Data
         public async Task<Product> GetProduct(int id)
         {
             var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
-
             return product;
         }
 

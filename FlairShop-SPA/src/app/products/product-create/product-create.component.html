@@ -1,0 +1,28 @@
+<form [formGroup]="productCreateForm" (ngSubmit)="createProduct()" class="container-fluid">
+  <h2 class="text-center text-primary">Add an Item!</h2>
+  <hr>
+
+  <div class="form-group">
+      <input [ngClass]="{'is-invalid': productCreateForm.get('description').errors && productCreateForm.get('description').touched}" class="form-control"
+        placeholder="Description" formControlName="description">
+      <div class="invalid-feedback" *ngIf="productCreateForm.get('description').touched && productCreateForm.get('description').hasError('required')">Description is Required!!</div>
+    </div>
+
+    <div class="form-group">
+      <input [ngClass]="{'is-invalid': productCreateForm.get('productType').errors && productCreateForm.get('productType').touched}" class="form-control"
+        placeholder="Product Type" formControlName="productType">
+      <div class="invalid-feedback" *ngIf="productCreateForm.get('productType').touched && productCreateForm.get('productType').hasError('required')">Type is Required!</div>
+    </div>
+
+    <div class="form-group">
+      <input [ngClass]="{'is-invalid': productCreateForm.get('price').errors && productCreateForm.get('price').touched}" class="form-control"
+        placeholder="Price Tag" formControlName="price">
+      <div class="invalid-feedback" *ngIf="productCreateForm.get('price').touched && productCreateForm.get('price').hasError('required')">Price Tag is Required!</div>
+    </div>
+
+  <div class="form-group text-center">
+    <button class="btn btn-success" [disabled]="!productCreateForm.valid" type="submit">Create Item</button>
+    <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+  </div>
+  
+</form>

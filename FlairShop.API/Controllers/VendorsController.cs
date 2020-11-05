@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using FlairShop.API.Data;
 using FlairShop.API.Dtos;
+using FlairShop.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -52,5 +53,14 @@ namespace FlairShop.API.Controllers
 
             throw new Exception($"Deleting Vendor {id} failed on delete!");
         }
+        // [HttpGet("{id}")]
+        // public async Task<IActionResult> GetVendorProducts(int id)
+        // {
+        //     var vendorProducts = await _repo.GetVendorProducts(id);
+            
+        //     var vendorProductsToReturn = _mapper.Map<IEnumerable<ProductForDetailsDto>>(vendorProducts);
+
+        //     return Ok(vendorProductsToReturn);
+        // }
     }
 }

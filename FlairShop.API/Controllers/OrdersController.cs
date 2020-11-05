@@ -43,7 +43,7 @@ namespace FlairShop.API.Controllers
             userFromRepo.Orders.Add(orderToCreate);
             await _repo.SaveAll();
 
-            return Ok(orderToCreate);
+            return Ok(orderForCreateDto);
         }
         [HttpGet]
         public async Task<IActionResult> GetOrders(int userId)

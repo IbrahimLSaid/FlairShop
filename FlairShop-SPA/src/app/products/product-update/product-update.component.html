@@ -1,0 +1,70 @@
+<div class="container mt-4">
+  <div class="row mb-5">
+    <h1>{{product.description}}'s Item Update</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+        <p><strong>Information:</strong> You have made changes to the item. Any unsaves changes will be lost!</p>
+      </div>
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="../../../assets/ShopCart.jpg" alt="Cart">
+        <div class="card-body">
+          <form #editForm="ngForm" id="editForm" (ngSubmit)="updateProduct()">
+          <div>
+            <strong>Name:</strong>
+            <textarea name="descrption" rows="1" class="form-control" [ngModel]="product.description"></textarea>
+            <strong>Classification:</strong>
+            <textarea name="productType" rows="1" class="form-control" [ngModel]="product.productType"></textarea>
+          </div>
+          <div>
+            <strong>Price:</strong>
+            <textarea name="price" rows="1" class="form-control" [ngModel]="product.price"></textarea>
+          </div>
+        </form>
+        <div>
+          <strong>Brought By:</strong>
+          <p name="vendorName" rows="1" class="form-control">{{product.vendorName}}</p>
+        </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button [disabled]="!editForm" form="editForm" class="btn btn-primary w-100 btn-block">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <div class="container">
+          <div class="">
+            <div class="col-xs-12">
+        <nav>
+          <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-use-tab" data-toggle="tab" href="#nav-use">How to Use!</a>
+            <a class="nav-item nav-link" id="nav-commercial-tab" data-toggle="tab" href="#nav-commercial">Commercial Use!</a>
+            <a class="nav-item nav-link" id="nav-return-tab" data-toggle="tab" href="#nav-return">Return Policy</a>
+            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about">About Items!</a>
+          </div>
+        </nav>
+        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-use">
+            Brand New Last Canon!
+          </div>
+          <div class="tab-pane fade" id="nav-commercial">
+            Brand New Laser Canon!
+          </div>
+          <div class="tab-pane fade" id="nav-return">
+            Brand New Laser Canon!
+          </div>
+          <div class="tab-pane fade" id="nav-about">
+            Brand New Laser Canon!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>
