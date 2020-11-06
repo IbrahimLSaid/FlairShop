@@ -5,4 +5,5 @@ export interface Product {
     productType: string;
     vendorName: string;
     vendorId: number;
+    photoUrl: string;
 }

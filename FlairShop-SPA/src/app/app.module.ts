@@ -26,6 +26,10 @@ import { ProductDetailsResolver } from './Resolvers/product-details.resolver';
 import { ProductUpdateComponent } from './products/product-update/product-update.component';
 import { ProductUpdateResolver } from './Resolvers/product-update.resolver';
 import { ProductCreateComponent } from './products/product-create/product-create.component';
+import { VendorAddComponent } from './vendors/vendor-add/vendor-add.component';
+import { VendorProductListComponent } from './vendors/vendor-product-list/vendor-product-list.component';
+import { VendorProductCardComponent } from './vendors/vendor-product-card/vendor-product-card.component';
+import { VendorDetailsResolver } from './Resolvers/vendor-details.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -45,7 +49,10 @@ export function tokenGetter() {
       VendorCardComponent,
       VendorDetailsComponent,
       ProductUpdateComponent,
-      ProductCreateComponent
+      ProductCreateComponent,
+      VendorAddComponent,
+      VendorProductListComponent,
+      VendorProductCardComponent
    ],
   imports: [
     BrowserModule,
@@ -69,7 +76,8 @@ export function tokenGetter() {
     ProductService,
     VendorService,
     ProductDetailsResolver,
-    ProductUpdateResolver
+    ProductUpdateResolver,
+    VendorDetailsResolver
   ],
   bootstrap: [AppComponent]
 })

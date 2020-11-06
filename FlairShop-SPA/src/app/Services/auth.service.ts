@@ -21,6 +21,7 @@ login(model: any) {
             if (user) {
                 localStorage.setItem('token', user.token);
                 this.decodedToken = this.jwtHelper.decodeToken(user.token);
+                this.userToken = this.jwtHelper.decodeToken(localStorage.getItem('token'));
             }
         })
     );
@@ -39,6 +40,17 @@ logout() {
 register(user: User) {
     return this.http.post(this.baseUrl + 'register', user);
 }
+
+isVendor() {
+    if (this.userToken.role === 'True')
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
 
 
 }

@@ -10,6 +10,7 @@ namespace FlairShop.API.Models
         [Column(TypeName="money")]
         public decimal Price { get; set; }
         public string ProductType { get; set; }
+        public string PhotoUrl { get; set; }
         public int VendorId { get; set; }
         public Vendor Vendor { get; set; }
         public ICollection<Order> Orders { get; set; }

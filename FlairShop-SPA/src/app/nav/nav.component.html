@@ -7,20 +7,24 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/parcels']" routerLinkActive="router-link-active">My Parcels <span class="sr-only">(current)</span></a>
+            <a class="nav-link" [routerLink]="['/orders']" routerLinkActive="router-link-active">My Orders<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/vendors']" routerLinkActive="router-link-active">Vendors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/products']" routerLinkActive="router-link-active">Marketplace</a>
+            <a class="nav-link" [routerLink]="['/products']" routerLinkActive="router-link-active">Products</a>
+          </li>
+          <li *ngIf="isVendor()" class="nav-item">
+            <a class="nav-link" [routerLink]="['/vendors/products']" routerLinkActive="router-link-active">My Products</a>
           </li>
         </ul>
         <div class="dropdown" *ngIf="loggedIn()">
           <a class="nav-link dropdown-toggle btn-success" href="#" id="dropdown01" data-toggle="dropdown">Welcome {{authService.userToken.unique_name}}</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">My Profile</a>
-            <a class="dropdown-item" href="#">My Parcels</a>
+            <a class="dropdown-item" href="#">My Orders</a>
+            <a class="dropdown-item" *ngIf="isVendor()" href="#">Vendor Profile</a>
             <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
           </div>
         </div>

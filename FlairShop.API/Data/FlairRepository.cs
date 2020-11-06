@@ -63,6 +63,13 @@ namespace FlairShop.API.Data
 
             return vendor;
         }
+        public async Task<Vendor> GetVendorByUser(int userid)
+        {
+            var vendor = await _context.Vendors.Include(p => p.Products).FirstOrDefaultAsync(p => p.UserId == userid);
+
+            return vendor;
+        }
+
 
         public async Task<IEnumerable<Product>> GetProducts()
         {
@@ -80,7 +87,12 @@ namespace FlairShop.API.Data
             var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
             return product;
         }
+        public async Task<Vendor> AddVendor(Vendor vendor)
+        {
+            await _context.Vendors.AddAsync(vendor);
 
+            return vendor;
+        }
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;

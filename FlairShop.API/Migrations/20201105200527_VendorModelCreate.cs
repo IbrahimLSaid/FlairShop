@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FlairShop.API.Migrations
 {
-    public partial class Recreation : Migration
+    public partial class VendorModelCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,11 +20,12 @@ namespace FlairShop.API.Migrations
                     LastName = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     Gender = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
-                    Role = table.Column<string>(nullable: true)
+                    IsVendor = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -39,11 +40,19 @@ namespace FlairShop.API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     EstateAddress = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<int>(nullable: false)
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhotoUrl = table.Column<string>(nullable: true),
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vendors", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Vendors_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -55,6 +64,7 @@ namespace FlairShop.API.Migrations
                     Description = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(type: "money", nullable: false),
                     ProductType = table.Column<string>(nullable: true),
+                    PhotoUrl = table.Column<string>(nullable: true),
                     VendorId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -111,6 +121,11 @@ namespace FlairShop.API.Migrations
                 name: "IX_Products_VendorId",
                 table: "Products",
                 column: "VendorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vendors_UserId",
+                table: "Vendors",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -122,10 +137,10 @@ namespace FlairShop.API.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Vendors");
 
             migrationBuilder.DropTable(
-                name: "Vendors");
+                name: "Users");
         }
     }
 }

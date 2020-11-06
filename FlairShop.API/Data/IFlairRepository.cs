@@ -17,10 +17,11 @@ namespace FlairShop.API.Data
 
         Task<IEnumerable<Vendor>> GetVendors();
         Task<Vendor> GetVendor(int id);
+        Task<Vendor> GetVendorByUser(int userid);
 
         Task<IEnumerable<Product>> GetProducts();
         Task<Product> GetProduct(int id);
-
-        Task<IEnumerable<Product>> GetVendorProducts(int partnerId);
+        Task<Vendor> AddVendor(Vendor vendor);
+        Task<IEnumerable<Product>> GetVendorProducts(int vendorId);
     }
 }

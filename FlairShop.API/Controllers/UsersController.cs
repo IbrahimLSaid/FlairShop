@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using FlairShop.API.Data;
 using FlairShop.API.Dtos;
+using FlairShop.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -67,6 +68,19 @@ namespace FlairShop.API.Controllers
                 return NoContent();
 
             throw new Exception($"Deleting user {id} failed on save!");
+        }
+        [HttpPost("ActivateVendor")]
+        public async Task<IActionResult> ActivateVendor(Vendor vendor)
+        {
+            var vendorUser = await _repo.GetUser(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            vendorUser.IsVendor = true;
+
+            vendor.User = vendorUser;
+
+            await _repo.AddVendor(vendor);
+            await _repo.SaveAll();
+
+            return Ok();
         }
     }
 }

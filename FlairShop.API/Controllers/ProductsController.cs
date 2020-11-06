@@ -51,10 +51,11 @@ namespace FlairShop.API.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> PlaceProduct(Product product)
         {
-            if (User.FindFirst(ClaimTypes.Role).Value != "Vendor")
+            if (User.FindFirst(ClaimTypes.Role).Value != "True")
                 return Unauthorized();
             
-            var vendorFromRepo = await _repo.GetVendor(product.VendorId);
+            var vendorFromRepo = await _repo.GetVendorByUser(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            product.VendorId = vendorFromRepo.Id;
 
             vendorFromRepo.Products.Add(product);
             await _repo.SaveAll();

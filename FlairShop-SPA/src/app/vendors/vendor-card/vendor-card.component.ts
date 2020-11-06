@@ -17,8 +17,8 @@ export class VendorCardComponent implements OnInit {
 
   }
 
-  isAdmin() {
-    if (this.role === 'Admin')
+  isVendor() {
+    if (this.role === 'True')
     {
       return true;
     }

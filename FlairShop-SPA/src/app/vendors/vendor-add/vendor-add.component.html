@@ -1,0 +1,30 @@
+<form [formGroup]="vendorAddForm" (ngSubmit)="activateVendor()" class="container-fluid">
+  <h2 class="text-center text-primary">Become a Vendor and Join Us Today!</h2>
+  <hr>
+
+  <div class="form-group">
+      <input [ngClass]="{'is-invalid': vendorAddForm.get('name').errors && vendorAddForm.get('name').touched}" class="form-control"
+        placeholder="Name" formControlName="name">
+      <div class="invalid-feedback" *ngIf="vendorAddForm.get('name').touched && vendorAddForm.get('name').hasError('required')">Name is Required!!</div>
+    </div>
+
+    <div class="form-group">
+      <input [ngClass]="{'is-invalid': vendorAddForm.get('estateAddress').errors && vendorAddForm.get('estateAddress').touched}" class="form-control"
+        placeholder="Estate Address" formControlName="estateAddress">
+      <div class="invalid-feedback" *ngIf="vendorAddForm.get('estateAddress').touched && vendorAddForm.get('estateAddress').hasError('required')">Estate Address is Required!<br/>If your work is online, please insert "Online".</div>
+    </div>
+
+    <div class="form-group">
+      <input [ngClass]="{'is-invalid': vendorAddForm.get('phoneNumber').errors && vendorAddForm.get('phoneNumber').touched}" class="form-control"
+        placeholder="Phone Number" formControlName="phoneNumber">
+      <div class="invalid-feedback" *ngIf="vendorAddForm.get('phoneNumber').touched && vendorAddForm.get('phoneNumber').hasError('required')">Phone Number is Required!</div>
+    </div>
+    <div class="form-group">
+      <input class="form-control" placeholder="Company Profile Photo URL or Logo" formControlName="photoUrl">
+    </div>
+
+  <div class="form-group text-center">
+    <button class="btn btn-success" [disabled]="!vendorAddForm.valid" type="submit">Activate Vendorship</button>
+    <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+  </div>
+</form>

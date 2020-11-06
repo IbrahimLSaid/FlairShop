@@ -53,14 +53,14 @@ namespace FlairShop.API.Controllers
 
             throw new Exception($"Deleting Vendor {id} failed on delete!");
         }
-        // [HttpGet("{id}")]
-        // public async Task<IActionResult> GetVendorProducts(int id)
-        // {
-        //     var vendorProducts = await _repo.GetVendorProducts(id);
+        [HttpGet("VendorProducts/{id}")]
+        public async Task<IActionResult> GetVendorProducts(int id)
+        {
+            var vendorProducts = await _repo.GetVendorProducts(id);
             
-        //     var vendorProductsToReturn = _mapper.Map<IEnumerable<ProductForDetailsDto>>(vendorProducts);
+            var vendorProductsToReturn = _mapper.Map<IEnumerable<ProductForListDto>>(vendorProducts);
 
-        //     return Ok(vendorProductsToReturn);
-        // }
+            return Ok(vendorProductsToReturn);
+        }
     }
 }

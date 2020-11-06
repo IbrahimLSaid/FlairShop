@@ -10,5 +10,6 @@ namespace FlairShop.API.Dtos
         public string ProductType { get; set; }
         public int VendorId { get; set; }
         public string VendorName { get; set; }
+        public string PhotoUrl { get; set; }
     }
 }

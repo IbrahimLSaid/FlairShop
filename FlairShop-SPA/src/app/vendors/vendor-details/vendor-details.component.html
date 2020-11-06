@@ -1,6 +1,62 @@
-<p>
-  vendor-details works!
-</p>
-<p>
-  Vendor Works!
-</p>
+<div class="container mt-4">
+  <div class="row mb-5">
+    <h1>{{vendor.name}}'s Details</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{vendor.photoUrl}}" alt="{{vendor.name}}">
+        <div class="card-body">
+          <div>
+            <strong>Company Name:</strong>
+            <p>{{vendor.name}}</p>
+            <strong>Company Address:</strong>
+            <p>{{vendor.estateAddress}}</p>
+          </div>
+          <div>
+            <strong>Phone Number:</strong>
+            <p>{{vendor.phoneNumber}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-primary w-100">Buy Now!</button>
+            <button class="btn btn-success w-100">Set Reminder!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <div class="container">
+          <div class="">
+            <div class="col-xs-12">
+        <nav>
+          <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-use-tab" data-toggle="tab" href="#nav-use">How to Use!</a>
+            <a class="nav-item nav-link" id="nav-commercial-tab" data-toggle="tab" href="#nav-commercial">Commercial Use!</a>
+            <a class="nav-item nav-link" id="nav-return-tab" data-toggle="tab" href="#nav-return">Return Policy</a>
+            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about">About Items!</a>
+          </div>
+        </nav>
+        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-use">
+            Brand New Laser Canon!
+          </div>
+          <div class="tab-pane fade" id="nav-commercial">
+            Brand New Laser Canon!
+          </div>
+          <div class="tab-pane fade" id="nav-return">
+            Brand New Laser Canon!
+          </div>
+          <div class="tab-pane fade" id="nav-about">
+            Brand New Laser Canon!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>

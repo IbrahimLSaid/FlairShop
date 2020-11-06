@@ -37,7 +37,7 @@ namespace FlairShop.API.Controllers
 
             var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
-            userToCreate.Role = "Member";
+            userToCreate.IsVendor = false;
 
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
@@ -58,7 +58,7 @@ namespace FlairShop.API.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name, userFromRepo.Username),
-                new Claim(ClaimTypes.Role, userFromRepo.Role)
+                new Claim(ClaimTypes.Role, userFromRepo.IsVendor.ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8

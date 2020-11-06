@@ -1,16 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/Models/product';
-import { User } from 'src/app/Models/user';
-import { AlertifyService } from 'src/app/Services/alertify.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
-  selector: 'app-product-card',
-  templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css']
+  selector: 'app-vendor-product-card',
+  templateUrl: './vendor-product-card.component.html',
+  styleUrls: ['./vendor-product-card.component.css']
 })
-export class ProductCardComponent implements OnInit {
+export class VendorProductCardComponent implements OnInit {
   @Input() product: Product;
   role: string = this.authService.userToken.role;
 
@@ -21,7 +19,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   isVendor() {
-    if (this.role === 'True')
+    if (this.authService.isVendor())
     {
       return true;
     }
@@ -34,5 +32,4 @@ export class ProductCardComponent implements OnInit {
   deleteProduct() {
     this.productService.deleteProduct(this.product.id);
   }
-
 }

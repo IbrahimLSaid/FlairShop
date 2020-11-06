@@ -37,7 +37,6 @@ updateProduct(id: number, product: Product) {
 }
 
 createProduct(product: Product) {
-  product.vendorId = 1;
   return this.http.post(this.baseUrl + 'products/create', product, httpOptions);
 }
 

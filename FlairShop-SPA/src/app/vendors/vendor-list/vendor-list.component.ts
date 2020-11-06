@@ -21,4 +21,9 @@ export class VendorListComponent implements OnInit {
       this.alertify.error(error);
     });
   }
+
+  IsVendor()
+  {
+    this.vendorService.isVendor();
+  }
 }

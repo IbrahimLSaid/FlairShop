@@ -10,16 +10,18 @@ import { AuthService } from '../Services/auth.service';
 })
 export class NavComponent implements OnInit {
 
+  role: string;
   model: any = {};
   constructor(private authService: AuthService, private router: Router, private alertify: AlertifyService) { }
 
   login() {
     this.authService.login(this.model).subscribe(next => {
+      this.role = this.authService.userToken.role;
       this.alertify.success('Logged in successfully');
     }, error => {
       this.alertify.error(error);
     }, () => {
-      this.router.navigate(['/parcels']);
+      this.router.navigate(['/products']);
     });
   }
 
@@ -35,6 +37,13 @@ export class NavComponent implements OnInit {
     this.authService.logout();
     this.alertify.message('Logged out!');
     this.router.navigate['/home'];
+  }
+
+  isVendor() {
+    if(this.authService.isVendor())
+    {
+      return true;
+    }
   }
 
 

@@ -11,6 +11,9 @@ import { ProductDetailsResolver } from './Resolvers/product-details.resolver';
 import { ProductUpdateComponent } from './products/product-update/product-update.component';
 import { ProductUpdateResolver } from './Resolvers/product-update.resolver';
 import { ProductCreateComponent } from './products/product-create/product-create.component';
+import { VendorAddComponent } from './vendors/vendor-add/vendor-add.component';
+import { VendorProductListComponent } from './vendors/vendor-product-list/vendor-product-list.component';
+import { VendorDetailsResolver } from './Resolvers/vendor-details.resolver';
 
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent},
@@ -20,7 +23,9 @@ export const appRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: 'vendors', component: VendorListComponent},
-            { path: 'vendors/details/:id', component: VendorDetailsComponent},
+            { path: 'vendors/details/:id', component: VendorDetailsComponent, resolve: {vendor: VendorDetailsResolver}},
+            { path: 'vendors/add', component: VendorAddComponent},
+            { path: 'vendors/products', component: VendorProductListComponent},
             { path: 'products', component: ProductListComponent},
             { path: 'products/create', component: ProductCreateComponent},
             { path: 'products/details/:id', component: ProductDetailsComponent, resolve: {product: ProductDetailsResolver}},

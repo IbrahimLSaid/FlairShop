@@ -1,6 +1,7 @@
 export interface Vendor {
     id: number;
     name: string;
-    estateaddress: string;
-    phonenumber: number;
+    estateAddress: string;
+    phoneNumber: number;
+    photoUrl: string;
 }
