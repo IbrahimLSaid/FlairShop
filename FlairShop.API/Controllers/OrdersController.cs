@@ -12,45 +12,53 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlairShop.API.Controllers
 {
     [Authorize]
-    [Route("api/users/{userId}/{controller}")]
+    [Route("api/{controller}")]
     [ApiController]
     public class OrdersController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IFlairRepository _repo;
+        private readonly DataContext _context;
 
-        public OrdersController(IFlairRepository repo, IMapper mapper)
+        public OrdersController(IFlairRepository repo, IMapper mapper, DataContext context)
         {
+            _context = context;
             _repo = repo;
             _mapper = mapper;
         }
 
 
-        [HttpPost]
+        [HttpPost("CreateOrder")]
         // [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateOrder(int userId, OrderForCreateDto orderForCreateDto)
+        public async Task<IActionResult> CreateOrder(int productId, OrderForCreateDto orderForCreateDto)
         {
-            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+            var userFromRepo = await _repo.GetUser(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
 
-            var userFromRepo = await _repo.GetUser(userId);
+            if (userFromRepo.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
 
-            orderForCreateDto.UserId = userId;
-            orderForCreateDto.OrderDate = DateTime.Now;
+            orderForCreateDto.UserId = userFromRepo.Id;
 
             var orderToCreate = _mapper.Map<Order>(orderForCreateDto);
+
+            orderToCreate.OrderDate = DateTime.Now;
+            orderToCreate.Status = "Pending";
+            orderToCreate.ToAddress = userFromRepo.Address;
 
             userFromRepo.Orders.Add(orderToCreate);
             await _repo.SaveAll();
 
-            return Ok(orderForCreateDto);
+            return Ok();
         }
-        [HttpGet]
+        [HttpGet("all/{userId}")]
         public async Task<IActionResult> GetOrders(int userId)
         {
-            var Orders = await _repo.GetOrders(userId);
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
 
-            var ordersToReturn = _mapper.Map<IEnumerable<OrderForListDto>>(Orders);
+            var orders = await _repo.GetOrders(userId);
+
+            var ordersToReturn = _mapper.Map<IEnumerable<OrderForListDto>>(orders);
 
             return Ok(ordersToReturn);
         }
@@ -59,6 +67,9 @@ namespace FlairShop.API.Controllers
         public async Task<IActionResult> GetOrder(int id)
         {
             var order = await _repo.GetOrder(id);
+            
+            if (order.UserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
 
             var orderToReturn = _mapper.Map<OrderForDetailsDto>(order);
 

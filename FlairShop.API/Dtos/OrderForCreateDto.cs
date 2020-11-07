@@ -7,8 +7,5 @@ namespace FlairShop.API.Dtos
     {
         public int UserId { get; set; }
         public int ProductId { get; set; }
-        public string ToAddress { get; set; }
-        public DateTime OrderDate { get; set; }
-        public string Status { get; set; }
     }
 }

@@ -47,13 +47,13 @@
     padding: .6rem 1.2rem;
     margin: 1rem;
     color: white;
-    background-color: #1ebba3;
-    border-color: #1ebba3;
+    background-color: #bb231e;
+    border-color: #bb231e;
 }
 
 .btn-secondary:hover {
-    background-color: #189582;
-    border-color: #189582;
+    background-color: #bb231e;
+    border-color: #bb231e;
 }
 
 .jumbotron {
@@ -71,12 +71,12 @@ h3.heading {
 .heading-underline {
     width: 3rem;
     height: .2rem;
-    background-color: #1ebba3;
+    background-color: #bb231e;
     margin: 0 auto 2rem;
 }
 
 .feature .fa {
-    color: #1ebba3;
+    color: #bb231e;
 }
 
 .feature h3 {
@@ -113,12 +113,12 @@ h3.heading {
 }
 
 blockquote .fa {
-    color: #1ebba3;
+    color: #bb231e;
     margin: 1rem;
 }
 
 .clients-hr {
-    border-top: .05rem solid #1ebba3;
+    border-top: .05rem solid #bb231e;
 }
 
 footer {
@@ -143,11 +143,14 @@ footer .fa {
 }
 
 footer .fa:hover {
-    color: #1ebba3!important;
+    color: #bb231e!important;
 }
 
 hr.socket {
     width: 100%;
     border-top: .2rem solid #666b71;
     margin-top: 3rem;
+}
+.btn-success {
+    background-color: #bb231e;
 }

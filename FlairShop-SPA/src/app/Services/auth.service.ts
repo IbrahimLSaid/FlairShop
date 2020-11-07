@@ -42,15 +42,16 @@ register(user: User) {
 }
 
 isVendor() {
-    if (this.userToken.role === 'True')
+    if (this.loggedIn())
     {
-      return true;
-    }
-    else
-    {
-      return false;
+        if (this.userToken.role === 'True')
+        {
+            return true;
+        }
+            else
+        {
+            return false;
+        }
     }
   }
-
-
 }

@@ -45,7 +45,7 @@ namespace FlairShop.API.Data
         }
         public async Task<Order> GetOrder(int id)
         {
-            var order = await _context.Orders.FirstOrDefaultAsync(p => p.OrderId == id);
+            var order = await _context.Orders.Include(p => p.Product).Include(u => u.User).FirstOrDefaultAsync(p => p.OrderId == id);
 
             return order;
         }
@@ -70,7 +70,6 @@ namespace FlairShop.API.Data
             return vendor;
         }
 
-
         public async Task<IEnumerable<Product>> GetProducts()
         {
             var products = await _context.Products.ToListAsync();
@@ -84,7 +83,7 @@ namespace FlairShop.API.Data
 
         public async Task<Product> GetProduct(int id)
         {
-            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+            var product = await _context.Products.Include(v => v.Vendor).FirstOrDefaultAsync(p => p.Id == id);
             return product;
         }
         public async Task<Vendor> AddVendor(Vendor vendor)

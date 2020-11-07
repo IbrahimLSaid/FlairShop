@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FlairShop.API.Migrations
 {
-    public partial class VendorModelCreate : Migration
+    public partial class FinalImplements : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -4,32 +4,32 @@
   </div>
   <div class="row">
     <div class="col-sm-4">
-      <div *ngIf="editForm.dirty" class="alert alert-info">
+      <div *ngIf="editProductForm.dirty" class="alert alert-info">
         <p><strong>Information:</strong> You have made changes to the item. Any unsaves changes will be lost!</p>
       </div>
       <div class="card">
         <img class="card-img-top img-thumbnail" src="../../../assets/ShopCart.jpg" alt="Cart">
         <div class="card-body">
-          <form #editForm="ngForm" id="editForm" (ngSubmit)="updateProduct()">
+          <form #editProductForm="ngForm" id="editProductForm" (ngSubmit)="updateProduct()">
           <div>
-            <strong>Name:</strong>
-            <textarea name="descrption" rows="1" class="form-control" [ngModel]="product.description"></textarea>
-            <strong>Classification:</strong>
-            <textarea name="productType" rows="1" class="form-control" [ngModel]="product.productType"></textarea>
+            <strong>Description:</strong>
+            <input name="descrption" rows="1" class="form-control" [(ngModel)]="product.description">
+            <strong>Product Type:</strong>
+            <input name="productType" rows="1" class="form-control" [(ngModel)]="product.productType">
           </div>
           <div>
             <strong>Price:</strong>
-            <textarea name="price" rows="1" class="form-control" [ngModel]="product.price"></textarea>
+            <input name="price" rows="1" class="form-control" [(ngModel)]="product.price">
           </div>
         </form>
         <div>
           <strong>Brought By:</strong>
-          <p name="vendorName" rows="1" class="form-control">{{product.vendorName}}</p>
+          <p name="vendorName" rows="1" class="form-control" [(ngModel)]="product.vendorId"></p>
         </div>
         </div>
         <div class="card-footer">
           <div class="btn-group d-flex">
-            <button [disabled]="!editForm" form="editForm" class="btn btn-primary w-100 btn-block">Save Changes</button>
+            <button [disabled]="!editProductForm" form="editProductForm" class="btn btn-primary w-100 btn-block">Save Changes</button>
           </div>
         </div>
       </div>

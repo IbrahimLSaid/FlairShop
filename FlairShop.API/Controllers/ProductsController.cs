@@ -63,12 +63,18 @@ namespace FlairShop.API.Controllers
             return Ok(product);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductForUpdateDto productForUpdateDto)
+        public async Task<IActionResult> UpdateProduct(int id, ProductForUpdateDto productForUpdateDto)
         {
-            if (User.FindFirst(ClaimTypes.Role).Value != "Vendor")
+            if (User.FindFirst(ClaimTypes.Role).Value != "True")
                 return Unauthorized();
+            
 
             var productFromRepo = await _repo.GetProduct(id);
+
+            var vendorForGuard = productFromRepo.Vendor;
+
+            if (vendorForGuard.UserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
 
             _mapper.Map(productForUpdateDto, productFromRepo);
 

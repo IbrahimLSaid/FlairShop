@@ -43,7 +43,6 @@ export class VendorAddComponent implements OnInit {
       this.router.navigate['/vendors'];
     }, error => {
       this.alertify.error('Something went wrong with the activation. Please try again!');
-      console.log(this.vendor);
     }, () => {
       this.router.navigate['/products'];
     });

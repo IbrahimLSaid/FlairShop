@@ -1,0 +1,116 @@
+<div class="container mt-4">
+  <div class="row mb-5">
+    <h1>{{order.product.description}}'s Item Details</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{order.product.photoUrl}}" alt="Cart">
+        <div class="card-body">
+          <div>
+            <strong>Order ID:</strong>
+            <p>{{order.orderId}}</p>
+            <strong>Name:</strong>
+            <p>{{order.product.description}}</p>
+            <strong>Classification:</strong>
+            <p>{{order.product.productType}}</p>
+          </div>
+          <div>
+            <strong>Total Paid:</strong>
+            <p>{{order.product.price}}</p>
+          </div>
+          <div>
+            <strong>Vendor:</strong>
+            <p>{{order.product.vendorName}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-primary w-100">Buy Now!</button>
+            <button class="btn btn-success w-100">Set Reminder!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <div class="container">
+          <div class="">
+            <div class="col-xs-12">
+        <nav>
+          <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-use-tab" data-toggle="tab" href="#nav-use">Order Details</a>
+            <a class="nav-item nav-link" id="nav-commercial-tab" data-toggle="tab" href="#nav-commercial">Product Details</a>
+            <a class="nav-item nav-link" id="nav-return-tab" data-toggle="tab" href="#nav-return">Vendor Details</a>
+            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about">Customer Details</a>
+          </div>
+        </nav>
+        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-use">
+            <p>
+              Order id Is {{order.orderId}}
+            </p>
+            <p>
+              Purchased product ID {{order.product.id}}
+            </p>
+            <p>
+              Product description is {{order.product.description}}
+            </p>
+            <p>
+              The order was placed on {{order.orderDate | date: 'medium'}}
+            </p>
+            <p>
+              The total amount is {{order.product.price}}$
+            </p>
+            <p>
+          </div>
+          <div class="tab-pane fade" id="nav-commercial">
+            <p>
+              The product type is {{order.product.productType}}
+            </p>
+            <p>
+              The total amount is {{order.product.price}}$
+            </p>
+          </div>
+          <div class="tab-pane fade" id="nav-return">
+            <p>
+              {{order.product.vendorName}}
+            </p>
+            <p>
+              The product's vendor ID is {{order.product.vendorId}}
+            </p>
+          </div>
+          <div class="tab-pane fade" id="nav-about">
+            <p>
+              {{order.user.username}}
+            </p>
+            <p>
+              {{order.user.lastName}}
+            </p>
+            
+            <p>
+              {{order.user.lastName}}
+            </p>
+            
+            <p>
+              {{order.user.dateOfBirth}}
+            </p>
+            
+            <p>
+              {{order.user.country}}
+            </p>
+            <p>
+              {{order.user.city}}
+            </p>
+            <p>
+              {{order.user.address}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>

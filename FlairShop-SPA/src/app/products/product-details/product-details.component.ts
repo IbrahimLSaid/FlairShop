@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/Models/product';
 import { AlertifyService } from 'src/app/Services/alertify.service';
-import { AuthService } from 'src/app/Services/auth.service';
-import { ProductService } from 'src/app/Services/product.service';
-import { UserService } from 'src/app/Services/user.service';
+import { OrderService } from 'src/app/Services/order.service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,7 +12,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class ProductDetailsComponent implements OnInit {
   product: Product;
 
-  constructor(private productService: ProductService, private authService: AuthService, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private orderService: OrderService, private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -22,5 +20,13 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+
+  createOrder() {
+    this.orderService.createOrder(this.product.id).subscribe(next => {
+      this.alertify.success('Product Ordered Successful!');
+    }, error => {
+      this.alertify.error('Problem Creating the Order!');
+    });
+  }
 
 }

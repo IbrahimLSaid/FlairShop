@@ -30,6 +30,14 @@ import { VendorAddComponent } from './vendors/vendor-add/vendor-add.component';
 import { VendorProductListComponent } from './vendors/vendor-product-list/vendor-product-list.component';
 import { VendorProductCardComponent } from './vendors/vendor-product-card/vendor-product-card.component';
 import { VendorDetailsResolver } from './Resolvers/vendor-details.resolver';
+import { OrderListComponent } from './orders/order-list/order-list.component';
+import { OrderService } from './Services/order.service';
+import { OrderDetailsComponent } from './orders/order-details/order-details.component';
+import { UserService } from './Services/user.service';
+import { UserDetailsResolver } from './Resolvers/user-details.resolver';
+import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { UserUpdateComponent } from './users/user-update/user-update.component';
+import { UserUpdateResolver } from './Resolvers/user-update.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -52,7 +60,11 @@ export function tokenGetter() {
       ProductCreateComponent,
       VendorAddComponent,
       VendorProductListComponent,
-      VendorProductCardComponent
+      VendorProductCardComponent,
+      OrderListComponent,
+      OrderDetailsComponent,
+      UserDetailsComponent,
+      UserUpdateComponent
    ],
   imports: [
     BrowserModule,
@@ -75,9 +87,13 @@ export function tokenGetter() {
     AuthGuard,
     ProductService,
     VendorService,
+    OrderService,
+    UserService,
     ProductDetailsResolver,
     ProductUpdateResolver,
-    VendorDetailsResolver
+    VendorDetailsResolver,
+    UserDetailsResolver,
+    UserUpdateResolver,
   ],
   bootstrap: [AppComponent]
 })

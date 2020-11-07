@@ -1,7 +1,5 @@
 import {Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
-// import { ParcelsComponent } from './parcels/parcels.component';
-// import { PartnersComponent } from './partners/partners.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
@@ -14,6 +12,11 @@ import { ProductCreateComponent } from './products/product-create/product-create
 import { VendorAddComponent } from './vendors/vendor-add/vendor-add.component';
 import { VendorProductListComponent } from './vendors/vendor-product-list/vendor-product-list.component';
 import { VendorDetailsResolver } from './Resolvers/vendor-details.resolver';
+import { OrderListComponent } from './orders/order-list/order-list.component';
+import { OrderDetailsComponent } from './orders/order-details/order-details.component';
+import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { UserDetailsResolver } from './Resolvers/user-details.resolver';
+import { UserUpdateComponent } from './users/user-update/user-update.component';
 
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent},
@@ -30,6 +33,10 @@ export const appRoutes: Routes = [
             { path: 'products/create', component: ProductCreateComponent},
             { path: 'products/details/:id', component: ProductDetailsComponent, resolve: {product: ProductDetailsResolver}},
             { path: 'products/update/:id', component: ProductUpdateComponent, resolve: {product: ProductUpdateResolver}},
+            { path: 'orders', component: OrderListComponent},
+            { path: 'orders/details/:id', component: OrderDetailsComponent},
+            { path: 'users/:id', component: UserDetailsComponent, resolve: {user: UserDetailsResolver}},
+            { path: 'users/update/:id', component: UserUpdateComponent, resolve: {user: UserDetailsResolver}},
         ]
     },
     { path: '**', redirectTo: 'home', pathMatch: 'full'}

@@ -8,15 +8,15 @@ import { AuthService } from '../Services/auth.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
 
+export class NavComponent implements OnInit {
   role: string;
   model: any = {};
+
   constructor(private authService: AuthService, private router: Router, private alertify: AlertifyService) { }
 
   login() {
     this.authService.login(this.model).subscribe(next => {
-      this.role = this.authService.userToken.role;
       this.alertify.success('Logged in successfully');
     }, error => {
       this.alertify.error(error);

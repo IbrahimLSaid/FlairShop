@@ -11,7 +11,7 @@ import { ProductService } from 'src/app/Services/product.service';
   styleUrls: ['./product-update.component.css']
 })
 export class ProductUpdateComponent implements OnInit {
-  @ViewChild('editForm') editForm: NgForm;
+  @ViewChild('editProductForm') editProductForm: NgForm;
   product: Product;
 
   constructor(private productService: ProductService, private route: ActivatedRoute, private alertify: AlertifyService) { }
@@ -25,9 +25,9 @@ export class ProductUpdateComponent implements OnInit {
   updateProduct() {
     this.productService.updateProduct(this.product.id, this.product).subscribe(next => {
       this.alertify.success('Item Updated Successfully!');
-      this.editForm.reset(this.product);
+      this.editProductForm.reset(this.product);
     }, error => {
-      this.alertify.error(this.product.description);
+      this.alertify.error('Problem Updating Product!');
     });
   }
 

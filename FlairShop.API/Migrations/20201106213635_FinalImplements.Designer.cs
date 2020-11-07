@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlairShop.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201105200527_VendorModelCreate")]
-    partial class VendorModelCreate
+    [Migration("20201106213635_FinalImplements")]
+    partial class FinalImplements
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

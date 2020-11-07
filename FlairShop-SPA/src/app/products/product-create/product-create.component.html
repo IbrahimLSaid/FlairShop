@@ -20,6 +20,10 @@
       <div class="invalid-feedback" *ngIf="productCreateForm.get('price').touched && productCreateForm.get('price').hasError('required')">Price Tag is Required!</div>
     </div>
 
+    <div class="form-group">
+      <input class="form-control" placeholder="Product Photo URL or Link" formControlName="photoUrl">
+    </div>
+
   <div class="form-group text-center">
     <button class="btn btn-success" [disabled]="!productCreateForm.valid" type="submit">Create Item</button>
     <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>

@@ -1,0 +1,14 @@
+<div class="list-group container mb-5">
+  <div *ngFor="let order of orders">
+  <a [routerLink]="['/orders/details/' + order.orderId]" routerLinkActive="router-link-active"  class="list-group-item list-group-item-action flex-column align-items-start bg-success text-light">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">Order ID : {{order.orderId}}</h5>
+      <small>{{order.orderDate | date: 'medium'}}</small>
+    </div>
+    <div class="text-center">
+      <p class="mb-1">{{order.status}}</p>
+      <small>Pending Order in Place!</small>
+    </div>
+  </a>
+  </div>
+</div>

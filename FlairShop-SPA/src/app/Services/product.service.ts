@@ -41,7 +41,7 @@ createProduct(product: Product) {
 }
 
 deleteProduct(id: number) {
-  return this.http.delete(this.baseUrl + 'products/delete' + id);
+  return this.http.delete(this.baseUrl + 'products/delete/' + id);
 }
 
 }

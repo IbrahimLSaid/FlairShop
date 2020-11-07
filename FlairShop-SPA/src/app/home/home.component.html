@@ -2,10 +2,12 @@
 <div class="offset">
   <div *ngIf="!registerMode">
     <div class="caption text-center home-inner">
-      <h1>Influence Somewhere Afar!</h1>
-    <h3 class="lead">Come on in to order your parcel... All you need to do is sign up!</h3>
+      <h1>Welcome to Flairshop</h1>
+    <h3 class="lead">Connecting the world's economy!</h3>
+      <div *ngIf="!loggedIn()">
       <button class="btn btn-outline-info btn-lg mr-2" (click)="registerToggle()">Register</button>
       <button class="btn btn-primary btn-lg">Learn more</button>
+      </div>
   </div>
 </div>
 
@@ -20,8 +22,8 @@
 
 <div id="offers" class="offset">
   <div class="col-12 narrow text-center">
-    <h1>Bolt Express Ltd. is committed to delivering the best possible service, as well as the fastest, to its customers.</h1>
-    <p class="lead">Delivery your parcel to anywhere across the Egyptian republic.</p>
+    <h1>Flairshop Ltd. is committed to delivering the best possible service, as well as the fastest, to its customers and vendors!</h1>
+    <p class="lead">Order from and to anywhere across the Egyptian republic.</p>
     <a class="btn btn-secondary btn-md" href="#">Our History of Work!</a>
   </div>
 </div>
@@ -39,23 +41,23 @@
 
       <div class="col-md-4">
         <div class="feature">
-          <i class="fa fa-play-circle fa-4x" data-fa-transform="shrink-3 up-5"></i>
-          <h3>Track you parcel, anytime, anywhere!</h3>
-          <p>You can keep track of your parcel's current location from the website.</p>
+          <i class="fa fa-play-circle fa-4x mb-5" data-fa-transform="shrink-3 up-5"></i>
+          <h3>Track you order, anytime, anywhere!</h3>
+          <p>You can keep track of your order's current location from the website.</p>
         </div>
       </div>
 
       <div class="col-md-4">
         <div class="feature">
-          <i class="fa fa-sliders fa-4x" data-fa-transform="shrink-3 up-5"></i>
-          <h3>Our insurance partners are of the finest!</h3>
+          <i class="fa fa-sliders fa-4x mb-5" data-fa-transform="shrink-3 up-5"></i>
+          <h3>Our vendors and partners are of the finest!</h3>
           <p>We offer insurance policies at a discounted price, and ease of mind.</p>
         </div>
       </div>
 
       <div class="col-md-4">
         <div class="feature">
-          <i class="fa fa-wpforms fa-4x" data-fa-transform="shrink-3 up-5"></i>
+          <i class="fa fa-wpforms fa-4x mb-5" data-fa-transform="shrink-3 up-5"></i>
           <h3>Buy high-quality products made by our production partners!</h3>
           <p>We offer top-notch products in our marketplace that can be bought along with a special delivery!</p>
         </div>
@@ -78,23 +80,23 @@
       </div>
 
       <div class="col-md-4">
-        <h3>HTML5</h3>
+        <h3>Free Cancellation</h3>
         <div class="feature">
-          <i class="fa fa-times fa-3x"></i>
+          <i class="fa fa-times fa-3x mb-3"></i>
         </div>
-        <p class="lead">Cancel the delivery anytime!</p>
+        <p class="lead">Cancel the order anytime!</p>
       </div>
       <div class="col-md-4">
-        <h3>HTML5</h3>
+        <h3>Rerouting</h3>
         <div class="feature">
-          <i class="fa fa-code fa-3x"></i>
+          <i class="fa fa-code fa-3x mb-3"></i>
         </div>
-        <p class="lead">Reroute your parcel at a time!</p>
+        <p class="lead">Reroute your order at a time!</p>
       </div>
       <div class="col-md-4">
-        <h3>HTML5</h3>
+        <h3>Delivery Optimal</h3>
         <div class="feature">
-          <i class="fa fa-bold fa-3x"></i>
+          <i class="fa fa-bold fa-3x mb-3"></i>
         </div>
         <p class="lead">As bold as delivery optimization can be!</p>
       </div>
@@ -130,7 +132,7 @@
           <div class="col-md-8">
             <blockquote>
               <i class="fa fa-quote-left"></i>
-                I see Bolt Express support as more of a partner to my company than a mere service provider. I can pick up a phone and talk to anyone at any time and the way they
+                I see Flairshop support as more of a partner to my company than a mere service provider. I can pick up a phone and talk to anyone at any time and the way they
                 they interact with us as a business makes it really simple.
             </blockquote>
             <hr class="clients-hr">
@@ -147,7 +149,7 @@
           <div class="col-md-8">
             <blockquote>
               <i class="fa fa-quote-left"></i>
-                The great thing about Bolt Express is it's not just a website, it's a delivery company that is animate. Bolt Express's services are seamingly promising and
+                The great thing about Flairshop is it's not just a website, it's a delivery company that is animate. Flairshop's services are seamingly promising and
                 extremely effecient to me. 
             </blockquote>
             <hr class="clients-hr">
@@ -161,7 +163,7 @@
   </div>
 
   <div class="col-12 narrow text-center">
-    <p class="lead">Want to join us in as a partner?</p>
+    <p class="lead">Want to join us in as a vendor?</p>
     <a class="btn btn-secondary btn-md" [routerLink]="['/vendors/add']">Fill this form!</a>
   </div>
 
@@ -169,20 +171,19 @@
      <footer>
       <div class="row justify-content-center">
       <div class="col-md-5 text-center">
-        <img src="../../assets/VoltLogo.png" alt="">
+        <img src="../../assets/FlairshopLogo.png" alt="">
         <p>At our core is a collection of desiign and development solutions that
           represent everything your business needs to compete in the modern market.
         </p>
         <strong>Contact Info</strong>
-        <P>(888) 888-8888<br>email@boltexpress.com</P>
+        <P>(888) 888-8888<br>email@Flairshop.com</P>
         <a href="#" target="_blank"><i class="fa fa-facebook-square"></i></a>
         <a href="#" target="_blank"><i class="fa fa-twitter-square"></i></a>
         <a href="#" target="_blank"><i class="fa fa-youtube-square"></i></a>
       </div>
 
       <hr class="socket">
-      &copy; Bolt Express Ltd.
-
+      &copy; Flairshop.
     </div>
      </footer>
   </div>

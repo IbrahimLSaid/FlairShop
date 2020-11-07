@@ -27,6 +27,7 @@ export class ProductCreateComponent implements OnInit {
       description: ['', Validators.required],
       productType: ['', Validators.required],
       price: ['', Validators.required],
+      photoUrl: []
     });
   }
 
@@ -34,7 +35,7 @@ export class ProductCreateComponent implements OnInit {
     this.product = Object.assign({}, this.productCreateForm.value);
     this.productService.createProduct(this.product).subscribe(next => {
       this.alertify.success('Item Added Successfully!');
-      this.router.navigate['products'];
+      this.router.navigate['/products'];
     }, error => {
       this.alertify.error('Something went wrong with the creation. Please try again!');
       console.log(this.product);

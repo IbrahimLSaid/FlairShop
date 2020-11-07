@@ -16,6 +16,6 @@ namespace FlairShop.API.Dtos
         public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
         public string Address { get; set; }
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<OrderForDetailsDto> Orders { get; set; }
     }
 }
